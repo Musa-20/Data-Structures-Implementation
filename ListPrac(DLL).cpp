@@ -74,6 +74,7 @@ void insertAt(int pos, const int& val){
         newNode->prev = curr;
         newNode->next = curr->next;
         curr->next->prev = newNode;
+        curr->next = newNode;
     }
     cnt++;
 };
