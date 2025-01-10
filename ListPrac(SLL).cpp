@@ -77,17 +77,17 @@ public:
             return;
         }
 
-        Node* temp = head;
+       curr = head;
         // case 2: remove a node in the list
-        while(temp->next != nullptr && temp->next->data != value)
+        while(curr->next != nullptr && curr->next->data != value)
         {
-            temp = temp->next;    
+            curr = curr->next;    
         }
 
-        if(temp->next != nullptr)
+        if(curr->next != nullptr)
         {
-            Node* toDelete = temp->next;
-            temp->next = temp->next->next;
+            Node* toDelete = curr->next;
+            curr->next = curr->next->next;
             delete toDelete; // to prevent memory leak
             cnt--;
         }
@@ -131,13 +131,18 @@ public:
 
     int currPos() const
     {
+        if(head == nullptr)
+        {
+            return -1;
+        }
+        int pos = 0;
         Node* temp = head;
-        int i;
-        for(i = 0; curr != temp; i++)
+        while(temp != nullptr && temp != curr)
         {
             temp = temp->next;
+            pos++;
         }
-        return i;
+        return pos;
     }
 
     int getCurrValue() const
