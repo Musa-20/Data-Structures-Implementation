@@ -33,32 +33,32 @@ public:
         delete[] arr;
     }
 
-    void clear() override {
+    void clear()  {
         top = -1; // Reset top to -1 to indicate an empty stack
     }
 
-    void push(int value) override {
+    void push(int value)  {
         if (top >= maxSize - 1) {
             throw std::overflow_error("Stack is full");
         }
         arr[++top] = value;
     }
 
-    int pop() override {
+    int pop()  {
         if (top < 0) {
             throw std::underflow_error("Stack is empty");
         }
         return arr[top--];
     }
 
-    int topValue() const override {
+    int topValue() const  {
         if (top < 0) {
             throw std::out_of_range("Stack is empty");
         }
         return arr[top];
     }
 
-    int length() const override {
+    int length() const  {
         return top + 1; // Return the number of elements in the stack
     }
 };
