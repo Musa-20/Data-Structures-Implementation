@@ -32,7 +32,7 @@ public:
     int dequeue(){
         if(size == 0)
         {
-            throw std::overflow_error("Queue is empty");
+            throw std::underflow_error("Queue is empty");
         }
         else
         {
@@ -147,6 +147,15 @@ int main() {
     std::cout << queue.nextUp() << std::endl;
 
     std::cout << "Queue size: " << queue.getSize() << std::endl;
+
+    try {
+        std::cout << "Dequeued: " << queue.dequeue() << std::endl;
+        std::cout << "Dequeued: " << queue.dequeue() << std::endl;
+        std::cout << "Dequeued: " << queue.dequeue() << std::endl;
+        std::cout << "Dequeued: " << queue.dequeue() << std::endl;
+    } catch (const std::underflow_error& e) {
+        std::cout << e.what() << std::endl;
+    }
 
     return 0;
 }
